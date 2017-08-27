@@ -13,12 +13,6 @@ public class OpenHashMap {
         }
     }
 
-    //return index throw value of hash-function
-    private int index(int key) {
-        int hash = (key >> 15) ^ key;
-        return Math.abs(hash) % size;
-    }
-
     public void put(int key, Long value) {
         int hash = (key % size);
         while (table[hash] != null && table[hash].getKey() != key) {
@@ -40,7 +34,7 @@ public class OpenHashMap {
         }
         if (table[hash] == null){
             System.out.println("No such key!");
-            return -1L;
+            return null;
         }
         else {
             return table[hash].getValue();
